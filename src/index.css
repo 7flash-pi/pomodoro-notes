@@ -1,7 +1,8 @@
 :root{
     --bg-color:rgb(40, 39, 39);
-    --grey:rgba(255, 255, 255, 0.842);
-    --primary:rgba(225, 56, 56, 0.776);
+    --grey:rgba(255, 255, 255, 0.952);
+    --secondry:rgba(225, 56, 56, 0.776);
+    --primary:rgb(98, 172, 241);
 
 
 }
@@ -9,6 +10,88 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--grey);
 
 }
 
+.todo-container{
+  padding: 20px;
+}
+
+.todo-form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 5em;
+}
+
+.todo-form > input{
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid var(--primary);
+  background: var(--bg-color);
+  color: var(--grey);
+  border-radius: 10px;
+
+}
+
+.Btn{
+  margin-top: 2em;
+  padding: 10px;
+  border: none;
+  background-color: var(--secondry);
+  border-radius: 10px;
+
+}
+.todoList{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.todoList >  h4{
+  text-decoration: underline var(--primary);
+  text-transform: capitalize;
+  font-size: 20px;
+} 
+
+.todoList-container{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+
+.todoList-container > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+  font-weight: 400;
+
+}
+
+.listBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-right: 20px;
+
+}
+.listBtn > button {
+  background-color: var(--secondry)  !important ;
+  color: var(--grey) !important;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-right: 20px;
+}
+
+.listIcon{
+  margin-right: 5px;
+  background-color: var(--secondry);
+  font-size: 15px;
+}

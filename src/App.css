@@ -1,7 +1,19 @@
-.app{
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--grey);
-
+.app > h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+.app-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 3em;
+}
+.left{
+    flex: 1;
+    justify-content:flex-end;
+}
+.right{
+    flex: 1;
 }
