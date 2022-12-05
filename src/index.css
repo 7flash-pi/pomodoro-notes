@@ -1,6 +1,6 @@
 :root{
-    --bg-color:rgb(40, 39, 39);
-    --grey:rgba(255, 255, 255, 0.952);
+    --bg-color:rgb(255, 255, 255);
+    --grey:rgba(54, 54, 54, 0.952);
     --secondry:rgba(225, 56, 56, 0.776);
     --primary:rgb(98, 172, 241);
 
@@ -94,4 +94,16 @@
   margin-right: 5px;
   background-color: var(--secondry);
   font-size: 15px;
+}
+.modal{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255 , 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
