@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { useGlobalContext } from '../context/context';
 
 const Todo = () => {
+
+  const {note,setNote,addNotes}=useGlobalContext();
+
   return (
     <div className='todo-container'>
         <div className="todo-form">
