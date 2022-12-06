@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { AiOutlineEdit ,AiOutlineDelete} from 'react-icons/ai';
+import React, { useEffect, useState } from 'react';
 import Modal from './Modal';
+import { useGlobalContext } from '../context/context';
 
 const TodoList = () => {
 
   const [showModal,setShowModal]=useState(false);
+  const { notes,fetchNotes}=useGlobalContext();
+  
+  useEffect(() =>{
+    fetchNotes();
+  },[])
 
   const openModal=() => {
     setShowModal(true);
@@ -22,10 +27,10 @@ const TodoList = () => {
           <span onClick={openModal}>Hello Wassup</span>
           <div className="listBtn">
             <button>
-              <AiOutlineEdit className='listIcon' />Edit
+              Edit
             </button>
            <button>
-              <AiOutlineDelete className='listIcon' />Delete
+              Delete
            </button>
             
           </div>

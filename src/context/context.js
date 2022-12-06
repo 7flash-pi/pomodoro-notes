@@ -1,23 +1,30 @@
 import React,{ useContext, useState } from "react";
+import { query, collection , onSnapshot } from 'firebase/firestore';
+import db from "../firebase";
 
 const AppContext=React.createContext();
 
 const AppProvider = ({children}) =>{
-    const [note,setNote]=useState([]);
-    
-    const addNotes = e => {
-        e.preventDefault();
+    const [notes,setNotes]=useState([]);
+
+    const fetchNotes=async() =>{
+        const q = query(collection(db, "notes"));
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            const newNote=querySnapshot.docs.map(d => d.data());
+            setNotes(newNote);
+            console.log();
+        });
     }
 
 
-
-    return <AppProvider.Provider value={{
-        setNote,
-        note,
-        addNotes
+    
+ return <AppContext.Provider value={{
+        setNotes,
+        notes,
+        fetchNotes
     }}>
         {children}
-    </AppProvider.Provider>
+    </AppContext.Provider>
 }
 
 export const useGlobalContext=()=>{
