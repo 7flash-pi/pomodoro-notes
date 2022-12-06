@@ -1,6 +1,6 @@
 :root{
-    --bg-color:rgb(255, 255, 255);
-    --grey:rgba(54, 54, 54, 0.952);
+    --bg-color:rgba(54, 54, 54, 0.952);
+    --grey:rgba(249, 244, 244, 0.952);
     --secondry:rgba(225, 56, 56, 0.776);
     --primary:rgb(98, 172, 241);
 
@@ -61,14 +61,14 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  margin-top: 2em;
+  margin-top: 10px;
 }
 
 .todoList-container > span {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
 
 }
@@ -101,7 +101,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255 , 0.5);
+  background-color: rgba(255, 255, 255 , 1);
   display: flex;
   align-items: center;
   justify-content: center;

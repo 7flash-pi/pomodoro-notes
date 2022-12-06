@@ -21,10 +21,13 @@ const TodoList = () => {
 
   return (
     <div className='todoList'>
-       <h4>Your Tasks</h4>
 
-       <div className="todoList-container">
-          <span onClick={openModal}>Hello Wassup</span>
+       <h4>Your Tasks</h4>
+       
+
+       { notes.map((note)=>{
+        return <div className="todoList-container">
+          <span onClick={openModal}>{note.task}</span>
           <div className="listBtn">
             <button>
               Edit
@@ -32,12 +35,11 @@ const TodoList = () => {
            <button>
               Delete
            </button>
-            
           </div>
        </div>
-        
-      
-    </div>
+      })}
+
+     </div>
   )
 }
 
