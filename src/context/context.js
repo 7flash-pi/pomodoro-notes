@@ -6,6 +6,8 @@ const AppContext=React.createContext();
 
 const AppProvider = ({children}) =>{
     const [notes,setNotes]=useState([]);
+    const [editId,setEditId]=useState(null);
+    const [edit,setEdit]=useState(false);
 
     const fetchNotes=async() =>{
         const q = query(collection(db, "notes"));
@@ -21,7 +23,9 @@ const AppProvider = ({children}) =>{
  return <AppContext.Provider value={{
         setNotes,
         notes,
-        fetchNotes
+        fetchNotes,
+        setEditId,
+        setEdit
     }}>
         {children}
     </AppContext.Provider>

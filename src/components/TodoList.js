@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from './Modal';
 import { useGlobalContext } from '../context/context';
+import SingleTodo from './SingleTodo';
 
 const TodoList = () => {
 
@@ -26,17 +27,7 @@ const TodoList = () => {
        
 
        { notes.map((note)=>{
-        return <div className="todoList-container">
-          <span onClick={openModal}>{note.task}</span>
-          <div className="listBtn">
-            <button>
-              Edit
-            </button>
-           <button>
-              Delete
-           </button>
-          </div>
-       </div>
+        return <SingleTodo task={note.task} key={note.id} todoId={note.id} openModal={openModal}/>
       })}
 
      </div>
