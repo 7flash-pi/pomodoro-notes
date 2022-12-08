@@ -1,27 +1,60 @@
 import React, { useState } from 'react';
 import { setDoc ,  doc} from 'firebase/firestore'
-import db  from '../firebase'
+import db  from '../firebase';
+import { useGlobalContext } from '../context/context';
 const Todo = () => {
 
-  const [category,setCategory]=useState('');
-  const [task,setTask]=useState('');
-  const [duration,setDuration]=useState('');
+const {notes,setNotes}=useGlobalContext();
+
+  const {inputTask,setInputTask}=useState({
+    task:'Add New Task',
+    category:'Add Category',
+    duration:'Duration'
+  })
 
 
   const addNotes = async(e) => {
     const newId=new Date().getTime().toString();
-    if(task){
+    if(inputTask.task){
       await setDoc(doc(db,'notes',newId),{
-        task: task,
-        category: category,
-        duration: duration,
+        task: inputTask.task,
+        category: inputTask.category,
+        duration: inputTask.duration,
         id: newId
       })
-      setDuration('');
-      setCategory('');
-      setTask('');
+      setInputTask({
+        task:'',
+        category:'',
+        duration:''
+  });
+  setNotes([...notes,inputTask])
     }
     
+  }
+
+  const handleChange = input =>{
+    const [name,value]=input.target;
+
+    switch(name){
+      case 'task':
+        setInputTask({...inputTask,
+        task:value
+        })
+        break;
+
+         case 'category':
+        setInputTask({...inputTask,
+        category:value
+        })
+        break;
+
+
+         case 'duration':
+        setInputTask({...inputTask,
+        duration:value
+        })
+        break;
+    }
   }
 
   return (
@@ -29,24 +62,24 @@ const Todo = () => {
         <div className="todo-form">
             <input 
               type="text" 
-              placeholder='Add New Task'
               required
-              onChange={(e) => setTask(e.target.value)}
-              value={task} />
+              onChange={handleChange}
+              value={inputTask.task}
+              name='task' />
 
             <input 
-              type=""
-              placeholder='Add Category' 
+              type="text"
               required
-              value={category}
-              onChange={(e) => setCategory(e.target.value)} />
+              value={inputTask.category}
+              onChange={handleChange} 
+              name='category'/>
 
             <input 
               type="text" 
-              placeholder='Duration' 
               required
-              value={duration}
-              onChange={(e) => setDuration(e.target.value)} />
+              value={inputTask.duration}
+              onChange={handleChange}
+              name='duration' />
             
             <button className='Btn' type='submit' onClick={addNotes}>Add Notes</button>
         </div>
