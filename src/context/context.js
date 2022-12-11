@@ -1,5 +1,5 @@
 import React,{ useContext, useState } from "react";
-import { query, collection , onSnapshot , setDoc ,doc } from 'firebase/firestore';
+import { query, collection , onSnapshot , setDoc ,doc , updateDoc} from 'firebase/firestore';
 import db from "../firebase";
 
 const AppContext=React.createContext();
@@ -16,6 +16,7 @@ const AppProvider = ({children}) =>{
 
 
   const addNotes = async(e) => {
+    e.preventDefault();
     const newId=new Date().getTime().toString();
     if(inputTask.task){
       await setDoc(doc(db,'notes',newId),{
@@ -24,18 +25,25 @@ const AppProvider = ({children}) =>{
             duration: inputTask.duration,
             id: newId
         })
-        setInputTask({
+        }
+
+        if(edit){
+             const docRef=doc(db,'notes',editId);
+             await updateDoc(docRef,{
+                 task: inputTask.task,
+                category: inputTask.category,
+                duration: inputTask.duration,
+                id: editId
+
+             });
+             }
+             setInputTask({
             task:'',
             category:'',
             duration:''
          });
-        setNotes(inputTask);
-        }
-
-        if(edit){
-            
-        }
-
+         setEdit(false);
+         setEditId('');
     }
 
     const fetchNotes=async() =>{
