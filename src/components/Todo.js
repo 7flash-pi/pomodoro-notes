@@ -4,36 +4,15 @@ import db  from '../firebase';
 import { useGlobalContext } from '../context/context';
 const Todo = () => {
 
-const {notes,setNotes}=useGlobalContext();
-
-  const {inputTask,setInputTask}=useState({
-    task:'Add New Task',
-    category:'Add Category',
-    duration:'Duration'
-  })
+const { 
+      inputTask,
+      setInputTask,
+      addNotes}=useGlobalContext();
 
 
-  const addNotes = async(e) => {
-    const newId=new Date().getTime().toString();
-    if(inputTask.task){
-      await setDoc(doc(db,'notes',newId),{
-        task: inputTask.task,
-        category: inputTask.category,
-        duration: inputTask.duration,
-        id: newId
-      })
-      setInputTask({
-        task:'',
-        category:'',
-        duration:''
-  });
-  setNotes([...notes,inputTask])
-    }
-    
-  }
 
   const handleChange = input =>{
-    const [name,value]=input.target;
+    const {name,value}=input.target;
 
     switch(name){
       case 'task':
@@ -65,21 +44,24 @@ const {notes,setNotes}=useGlobalContext();
               required
               onChange={handleChange}
               value={inputTask.task}
-              name='task' />
+              name='task'
+              placeholder='Add Task' />
 
             <input 
               type="text"
               required
               value={inputTask.category}
               onChange={handleChange} 
-              name='category'/>
+              name='category'
+              placeholder='add Category'/>
 
             <input 
               type="text" 
               required
               value={inputTask.duration}
               onChange={handleChange}
-              name='duration' />
+              name='duration'
+              placeholder='add duration' />
             
             <button className='Btn' type='submit' onClick={addNotes}>Add Notes</button>
         </div>
