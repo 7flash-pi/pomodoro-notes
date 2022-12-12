@@ -18,7 +18,7 @@ const AppProvider = ({children}) =>{
   const addNotes = async(e) => {
     e.preventDefault();
     const newId=new Date().getTime().toString();
-    if(inputTask.task){
+    if(inputTask.task && !edit ){
       await setDoc(doc(db,'notes',newId),{
             task: inputTask.task,
             category: inputTask.category,
@@ -27,15 +27,12 @@ const AppProvider = ({children}) =>{
         })
         }
 
-        if(edit){
-             const docRef=doc(db,'notes',editId);
-             await updateDoc(docRef,{
-                 task: inputTask.task,
-                category: inputTask.category,
-                duration: inputTask.duration,
-                id: editId
-
-             });
+        if(edit && editId){
+             const ref = doc(db,'notes',editId);
+             await updateDoc(ref,{task:inputTask.task,
+                                category:inputTask.category,
+                                duration:inputTask.duration }
+                )
              }
              setInputTask({
             task:'',

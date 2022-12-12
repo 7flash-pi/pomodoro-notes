@@ -3,7 +3,7 @@ import { useGlobalContext } from '../context/context';
 import { deleteDoc,doc ,getDoc,} from 'firebase/firestore';
 import db from '../firebase';
 
-const SingleTodo = ({task, openModal , todoId }) => {
+const SingleTodo = ({ task, openModal , todoId }) => {
 
     const { setEditId, setEdit , setInputTask }=useGlobalContext();
 
@@ -20,7 +20,7 @@ const SingleTodo = ({task, openModal , todoId }) => {
         const docSnap = await getDoc(docRef);
         if(docSnap.exists()) {
             const newData=docSnap.data();
-            console.log(newData);
+            console.log(newData.id);
             setInputTask({
             task:newData.task,
             category:newData.category,
