@@ -16,10 +16,7 @@ const TodoList = () => {
     setShowModal(true);
   }
 
-  if(showModal){
-    return <Modal setShowModal={ setShowModal } />
-  }
-
+  
   return (
     <div className='todoList'>
 
@@ -27,6 +24,10 @@ const TodoList = () => {
        
 
        { notes.map((note)=>{
+        if(showModal){
+           return <Modal setShowModal={ setShowModal } note = {note} />
+         }
+
         return <SingleTodo task={note.task} key={note.id} todoId={note.id} openModal={openModal}/>
       })}
 

@@ -1,6 +1,6 @@
 :root{
-    --bg-color:rgba(54, 54, 54, 0.952);
-    --grey:rgba(249, 244, 244, 0.952);
+    --bg-color:rgba(249, 244, 244, 0.952);
+    --grey:rgba(54, 54, 54, 0.952);;
     --secondry:rgba(225, 56, 56, 0.776);
     --primary:rgb(98, 172, 241);
 
@@ -111,6 +111,35 @@
   align-items: center;
   width: 80%;
   height: 60%;
-  background-color: var(--grey) !important;
-  color: var(--primary) !important;
+  background-color: #f8f3f8;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+              rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+              rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+              rgba(0, 0, 0, 0.17) 0px 12px 13px,
+              rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.left{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.right
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.right > h4 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.right > small {
+  font-weight: 600;
 }
