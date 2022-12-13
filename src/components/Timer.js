@@ -1,17 +1,18 @@
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { useGlobalContext } from '../context/context';
 
 const Timer = ({note}) => {
   const remainingTime=20;
   const { task }=note.task;
-  const {duration}=parseInt(note.duration);
   return (
     <div className='Timer'>
           <CountdownCircleTimer
             isPlaying
             duration={20}
-            colors={['#03800d' , '#f01818']}
-            colorsTime={[6,4]}
+            colors={['#eb7734']}
+            colorsTime={[6]}
+            trailColor="#151932"
           >
             {({ remainingTime }) => remainingTime}
           </CountdownCircleTimer>

@@ -5,6 +5,32 @@ import db from "../firebase";
 const AppContext=React.createContext();
 
 const AppProvider = ({children}) =>{
+
+     const [startanimate,setStartAnimate]=useState(false);
+
+     const startTimer = () =>{
+        setStartAnimate(true);
+    }
+
+    const pauseTimer = () =>{
+        setStartAnimate(false);
+    }
+
+    const stopTimer = () =>{
+        setStartAnimate(false);
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
     const [notes,setNotes]=useState([]);
     const [editId,setEditId]=useState(null);
     const [edit,setEdit]=useState(false);
@@ -63,7 +89,11 @@ const AppProvider = ({children}) =>{
         setEdit,
         addNotes,
         inputTask,
-        setInputTask
+        setInputTask,
+        startTimer,
+        stopTimer,
+        pauseTimer,
+        children
     }}>
         {children}
     </AppContext.Provider>
