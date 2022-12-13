@@ -25,7 +25,7 @@ const TodoList = () => {
 
        { notes.map((note)=>{
         if(showModal){
-           return <Modal setShowModal={ setShowModal } note = {note} />
+           return <Modal setShowModal={ setShowModal } note = {note} key={note.id} />
          }
 
         return <SingleTodo task={note.task} key={note.id} todoId={note.id} openModal={openModal}/>

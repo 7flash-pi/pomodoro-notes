@@ -15,6 +15,16 @@ const Timer = ({note}) => {
           >
             {({ remainingTime }) => remainingTime}
           </CountdownCircleTimer>
+          <div className="green">
+            <button>Pause</button>
+             <button className='red'>Stop</button>
+            <button>Resume</button>
+          </div>
+
+        <div className="breakForm">
+            <input type="number"/>
+            <button>Add Break</button>
+        </div>
       
     </div>
   )

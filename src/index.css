@@ -143,3 +143,39 @@
 .right > small {
   font-weight: 600;
 }
+.green > button {
+    background-color: rgb(3, 177, 3);
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    color: black;
+}
+.green > .red{
+  background-color: rgb(239, 86, 86) !important;
+  margin: 0 10px;
+}
+
+.breakForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.breakForm > input{
+  margin-top: 20px;
+  padding: 8px ;
+  width: 50px;
+  border-radius: 60%;
+}
+
+
+.breakForm > button {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    color: black;
+    background-color: var(--primary);
+    margin-left: 20px;
+
+}
