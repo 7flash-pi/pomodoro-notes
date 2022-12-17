@@ -3,10 +3,11 @@ import { BsSearch } from 'react-icons/bs';
 import { useGlobalContext } from '../context/context';
 
 const Search = () => {
+  const { searchResult }= useGlobalContext();
     const [search,setSearch]=useState('');
 
     useEffect(() => {
-
+      searchResult(search);
     } ,[search])
   return (
     <div className='search'>

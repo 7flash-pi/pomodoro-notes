@@ -1,5 +1,11 @@
 import React,{ useContext, useState } from "react";
-import { query, collection , onSnapshot , setDoc ,doc , updateDoc} from 'firebase/firestore';
+import { query,
+         collection ,
+         onSnapshot , 
+         setDoc , 
+         doc , 
+         updateDoc ,
+         where } from 'firebase/firestore';
 import db from "../firebase";
 
 const AppContext=React.createContext();
@@ -34,11 +40,11 @@ const AppProvider = ({children}) =>{
     const [notes,setNotes]=useState([]);
     const [editId,setEditId]=useState(null);
     const [edit,setEdit]=useState(false);
-      const [inputTask,setInputTask]=useState({
-    task:'',
-    category:'',
-    duration:''
-  });
+    const [inputTask,setInputTask]=useState({
+            task:'',
+            category:'',
+            duration:''
+        });
 
 
   const addNotes = async(e) => {
@@ -74,11 +80,15 @@ const AppProvider = ({children}) =>{
         const unsub = onSnapshot(q, (querySnapshot) => {
             const newNote=querySnapshot.docs.map(d => d.data());
             setNotes(newNote);
-            console.log();
         });
     }
 
-    const searchResult= (search) =>{
+    const searchResult= async(search) =>{
+        const q=query(collection(db,'notes'),where("category" , "==" , search));
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            const newNote=querySnapshot.docs.map(d => d.data());
+            setNotes(newNote);
+        });
         
     }
 
@@ -96,7 +106,7 @@ const AppProvider = ({children}) =>{
         startTimer,
         stopTimer,
         pauseTimer,
-        children
+        searchResult
     }}>
         {children}
     </AppContext.Provider>
