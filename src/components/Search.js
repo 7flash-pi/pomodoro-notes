@@ -7,7 +7,9 @@ const Search = () => {
     const [search,setSearch]=useState('');
 
     useEffect(() => {
-      searchResult(search);
+      if(search){
+        searchResult(search);
+        }
     } ,[search])
   return (
     <div className='search'>
